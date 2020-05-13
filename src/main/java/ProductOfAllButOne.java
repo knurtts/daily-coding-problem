@@ -23,38 +23,38 @@ public class ProductOfAllButOne {
 
     public int[] noDivisionAllButOne(int[] inArray) {
 
-        int shortLength = inArray.length - 1;
-        int[] shortArray = new int[shortLength];
         int[] newArray = new int[inArray.length];
+        //make new array
+        for (int i = 0; i < inArray.length; i++) {
 
-        for (int x = 0; x < inArray.length; x++) {
+            int product = 0;
+            int shortLength = inArray.length - 1;
+            int[] shortArray = new int[shortLength];
 
-            // Set short Array to remove unwanted integer
-            for (int y = 0; y < inArray.length; y++) {
-
-                if (inArray[y] != inArray[x]) {
-                    shortArray[x] = inArray[y];
+            System.out.println(inArray.length);
+            for (int j = 0; j < inArray.length; j++) {
+                System.out.println("Getting started now...");
+                if (inArray[i] != inArray[j] && j != inArray.length) {
+                    System.out.println("if...");
+                    shortArray[j] = inArray[i];
+                } else {
+                    shortArray[shortLength] = inArray[i];
                 }
             }
 
-            //Set integer[x] for new array
-            int product = shortArray[x];
 
-            for (int i = 0; i < shortLength; i++) {
-
-                for (int j = 0; j < shortLength; j++) {
-
-                    if (shortArray[i] != shortArray[j]) {
-                        product *= shortArray[j];
+            for (int j = 0; j < shortArray.length; j++) {
+                product = shortArray[j];
+                for (int k = 0; k < shortArray.length; k++) {
+                    if (shortArray[k] != shortArray[j]) {
+                        product *= shortArray[k];
                     }
+                    System.out.println(product);
                 }
-
             }
 
+            newArray[i] = product;
         }
-
-
-
         return newArray;
     }
 }
